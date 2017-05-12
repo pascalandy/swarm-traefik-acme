@@ -24,7 +24,6 @@ services:
       - "443:443"
       #- "8080:8080"
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
       - "./infra/traefik/traefik.toml:/traefik.toml"
       - "./infra/traefik/acme.json:/acme.json"
     networks:
@@ -86,8 +85,6 @@ services:
 
 networks:
   traefik0:
-    external: true
 
 networks:
   docker_proxy:
-    external: true
