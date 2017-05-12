@@ -1,19 +1,10 @@
 version: "3.1"
 
-networks:
-  traefik0:
-    external: true
-
-networks:
-  docker_proxy:
-    external: true
-
 services:
-
   docker-proxy:
     image: rancher/socat-docker
     network:
-      - docker_proxy
+      - "docker_proxy"
     deploy:
       replicas: 1
       placement:
@@ -81,3 +72,12 @@ services:
         #traefik.frontend.passHostHeader: "true"
         #traefik.frontend.rule: Host:swarm.ginsys.io
         #traefik.frontend.auth.basic: "toor:$apr1$B5HlT1Ke$BrwFqaWGUuRBIlKwOUnxo/"
+
+
+networks:
+  traefik0:
+    external: true
+
+networks:
+  docker_proxy:
+    external: true
