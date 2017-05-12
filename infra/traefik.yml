@@ -16,7 +16,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
 
   traefik:
-    image: containous/traefik:v1.2.3-alpine
+    image: traefik:1.2.3-alpine
     ports:
       - "80:80"
       - "443:443"
@@ -41,38 +41,6 @@ services:
         reservations:
           cpus: '0.10'
           memory: 50M
-
-  visualizer:
-    image: dockersamples/visualizer:stable
-    ports:
-      - "8080:8080"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    networks:
-      - "traefik0"
-    deploy:
-      replicas: 1
-      placement:
-        constraints:
-          - node.role == worker
-      restart_policy:
-        condition: on-failure
-      resources:
-        limits:
-          cpus: '0.20'
-          memory: 128M
-        reservations:
-          cpus: '0.10'
-          memory: 50M
-      labels:
-        traefik.enable: "false"
-        #traefik.docker.network: traefik0
-        #traefik.port: 8080
-        #traefik.backend.loadbalancer.sticky: "true"
-        #traefik.frontend.passHostHeader: "true"
-        #traefik.frontend.rule: Host:swarm.ginsys.io
-        #traefik.frontend.auth.basic: "toor:$apr1$B5HlT1Ke$BrwFqaWGUuRBIlKwOUnxo/"
-
 
 networks:
   traefik0:
