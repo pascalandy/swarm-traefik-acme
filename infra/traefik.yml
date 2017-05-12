@@ -1,6 +1,13 @@
----
 version: "3.1"
 
+networks:
+  traefik0:
+    external: true
+		
+networks:
+  docker_proxy:
+    external: true
+		
 services:
 
   docker-proxy:
@@ -82,9 +89,3 @@ services:
         #traefik.frontend.passHostHeader: "true"
         #traefik.frontend.rule: Host:swarm.ginsys.io
         #traefik.frontend.auth.basic: "toor:$apr1$B5HlT1Ke$BrwFqaWGUuRBIlKwOUnxo/"
-
-networks:
-  traefik0:
-
-networks:
-  docker_proxy:
