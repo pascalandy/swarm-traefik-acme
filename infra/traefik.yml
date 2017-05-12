@@ -3,11 +3,11 @@ version: "3.1"
 networks:
   traefik0:
     external: true
-		
+
 networks:
   docker_proxy:
     external: true
-		
+
 services:
 
   docker-proxy:
