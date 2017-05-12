@@ -87,7 +87,7 @@ services:
 networks:
   traefik0:
     external: true
-		
+
 networks:
   docker_proxy:
     external: true
